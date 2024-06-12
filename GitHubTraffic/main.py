@@ -84,7 +84,7 @@ def main():
                 # https://quix.io/docs/quix-streams/introduction.html
 
             print("All rows published")
-        time.sleep(10000)
+        time.sleep(3600) # sleep 1 hour
 
 
 if __name__ == "__main__":
