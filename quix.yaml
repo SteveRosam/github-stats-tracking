@@ -27,4 +27,7 @@ deployments:
         secretKey: GH_TOKEN
 
 # This section describes the Topics of the data pipeline
-topics: []
+topics:
+  - name: github_data
+    configuration:
+      partitions: 1
