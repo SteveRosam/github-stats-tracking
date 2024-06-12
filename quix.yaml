@@ -28,7 +28,4 @@ deployments:
 
 # This section describes the Topics of the data pipeline
 topics:
-  - name: github_data
-    configuration:
-      partitions: 1
   - name: github
