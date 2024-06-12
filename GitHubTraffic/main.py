@@ -73,7 +73,7 @@ def main():
             for row_data in data_with_id:
 
                 json_data = json.dumps(row_data)  # convert the row to JSON
-
+                print(json_data)
                 # publish the data to the topic
                 producer.produce(
                     topic=topic.name,
