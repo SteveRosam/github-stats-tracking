@@ -25,12 +25,8 @@ deployments:
         description: GitHub token
         required: true
         secretKey: GH_TOKEN
-      - name: GH_REPO
-        inputType: FreeText
-        description: Quix IO GitHub repo
-        required: true
-        value: ''
 
 # This section describes the Topics of the data pipeline
 topics:
   - name: github
+  - name: quix-streams-gh-stats
