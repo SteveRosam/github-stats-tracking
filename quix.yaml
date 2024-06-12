@@ -57,6 +57,5 @@ deployments:
 
 # This section describes the Topics of the data pipeline
 topics:
-  - name: github
   - name: quix-streams-gh-stats
   - name: template-hello-quix-gh-stats
