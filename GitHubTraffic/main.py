@@ -56,9 +56,9 @@ def get_data():
 
 
     return {
-        'traffic': traffic_sources,
-        'referrers': referring_sites,
-        'views': views,
+        "traffic": traffic_sources,
+        "referrers": referring_sites,
+        "views": views,
     }
 
 def main():
@@ -69,20 +69,17 @@ def main():
         # create a pre-configured Producer object.
         with app.get_producer() as producer:
             # iterate over the data from the hardcoded dataset
-            data_with_id = get_data()
-            for row_data in data_with_id:
+            json_data = json.dumps(get_data())  # convert the row to JSON
+            print(json_data)
+            # publish the data to the topic
+            producer.produce(
+                topic=topic.name,
+                key=f'github_stats_{OWNER}_{REPO}',
+                value=json_data,
+            )
 
-                json_data = json.dumps(row_data)  # convert the row to JSON
-                print(json_data)
-                # publish the data to the topic
-                producer.produce(
-                    topic=topic.name,
-                    key=f'github_stats_{OWNER}_{REPO}',
-                    value=json_data,
-                )
-
-                # for more help using QuixStreams see docs:
-                # https://quix.io/docs/quix-streams/introduction.html
+            # for more help using QuixStreams see docs:
+            # https://quix.io/docs/quix-streams/introduction.html
 
             print("All rows published")
         time.sleep(3600) # sleep 1 hour
