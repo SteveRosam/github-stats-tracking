@@ -21,7 +21,7 @@ topic = app.topic(topic_name)
 # Replace with your GitHub token and repository details
 GITHUB_TOKEN = os.getenv('GH_TOKEN', '')
 OWNER = 'quixio'
-REPO = 'quix-streams'
+REPO = os.getenv("GH_REPO", '')
 
 def get_data():
 
