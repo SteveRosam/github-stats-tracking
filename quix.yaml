@@ -31,3 +31,4 @@ topics:
   - name: github_data
     configuration:
       partitions: 1
+  - name: github
