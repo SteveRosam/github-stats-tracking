@@ -64,26 +64,27 @@ def main():
     """
     Read data from the hardcoded dataset and publish it to Kafka
     """
+    while True:
+        # create a pre-configured Producer object.
+        with app.get_producer() as producer:
+            # iterate over the data from the hardcoded dataset
+            data_with_id = get_data()
+            for row_data in data_with_id:
 
-    # create a pre-configured Producer object.
-    with app.get_producer() as producer:
-        # iterate over the data from the hardcoded dataset
-        data_with_id = get_data()
-        for row_data in data_with_id:
+                json_data = json.dumps(row_data)  # convert the row to JSON
 
-            json_data = json.dumps(row_data)  # convert the row to JSON
+                # publish the data to the topic
+                producer.produce(
+                    topic=topic.name,
+                    key=f'github_stats_{OWNER}_{REPO}',
+                    value=json_data,
+                )
 
-            # publish the data to the topic
-            producer.produce(
-                topic=topic.name,
-                key=f'github_stats_{OWNER}_{REPO}',
-                value=json_data,
-            )
+                # for more help using QuixStreams see docs:
+                # https://quix.io/docs/quix-streams/introduction.html
 
-            # for more help using QuixStreams see docs:
-            # https://quix.io/docs/quix-streams/introduction.html
-
-        print("All rows published")
+            print("All rows published")
+        time.sleep(10000)
 
 
 if __name__ == "__main__":
