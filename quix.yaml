@@ -58,4 +58,6 @@ deployments:
 # This section describes the Topics of the data pipeline
 topics:
   - name: quix-streams-gh-stats
+    configuration:
+      retentionInMinutes: -1
   - name: template-hello-quix-gh-stats
