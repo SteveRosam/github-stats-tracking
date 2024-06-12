@@ -5,7 +5,26 @@ metadata:
   version: 1.0
 
 # This section describes the Deployments of the data pipeline
-deployments: []
+deployments:
+  - name: GitHubTraffic
+    application: GitHubTraffic
+    deploymentType: Service
+    version: latest
+    resources:
+      cpu: 200
+      memory: 500
+      replicas: 1
+    variables:
+      - name: output
+        inputType: OutputTopic
+        description: Name of the output topic to write into
+        required: true
+        value: github_data
+      - name: GH_TOKEN
+        inputType: Secret
+        description: GitHub token
+        required: true
+        secretKey: GH_TOKEN
 
 # This section describes the Topics of the data pipeline
 topics: []
