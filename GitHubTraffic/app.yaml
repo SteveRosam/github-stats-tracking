@@ -9,7 +9,7 @@ variables:
   - name: GH_TOKEN
     inputType: Secret
     description: GitHub token
-    defaultValue: abc
+    defaultValue: GH_TOKEN
     required: true
 dockerfile: dockerfile
 runEntryPoint: main.py
