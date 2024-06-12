@@ -2,11 +2,11 @@ from quixstreams import Application  # import the Quix Streams modules for inter
 # (see https://quix.io/docs/quix-streams/v2-0-latest/api-reference/quixstreams.html for more details)
 
 # import additional modules as needed
-import random
 import os
 import json
 import requests
 import time
+import datetime
 
 # for local dev, load env vars from a .env file
 from dotenv import load_dotenv
@@ -54,11 +54,13 @@ def get_data():
     print("Referring Sites JSON:", referring_sites_json)
     print("Views JSON:", views_json)
 
-
+    current_time = datetime.datetime.utcnow()
     return {
         "traffic": traffic_sources,
         "referrers": referring_sites,
         "views": views,
+        "timestamp_iso": current_time.isoformat() + 'Z',  # ISO 8601 format
+        "timestamp_unix": int(current_time.timestamp())  # Unix timestamp
     }
 
 def main():
