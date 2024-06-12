@@ -6,7 +6,7 @@ metadata:
 
 # This section describes the Deployments of the data pipeline
 deployments:
-  - name: GitHubTraffic
+  - name: GitHubTraffic GitHubStats
     application: GitHubTraffic
     deploymentType: Service
     version: latest
@@ -19,12 +19,17 @@ deployments:
         inputType: OutputTopic
         description: Name of the output topic to write into
         required: true
-        value: github
+        value: quix-streams-gh-stats
       - name: GH_TOKEN
         inputType: Secret
         description: GitHub token
         required: true
         secretKey: GH_TOKEN
+      - name: GH_REPO
+        inputType: FreeText
+        description: Quix IO GitHub repo
+        required: true
+        value: quix-streams
 
 # This section describes the Topics of the data pipeline
 topics:
