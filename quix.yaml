@@ -61,3 +61,5 @@ topics:
     configuration:
       retentionInMinutes: -1
   - name: template-hello-quix-gh-stats
+    configuration:
+      retentionInMinutes: -1
