@@ -19,7 +19,7 @@ deployments:
         inputType: OutputTopic
         description: Name of the output topic to write into
         required: true
-        value: github_data
+        value: github
       - name: GH_TOKEN
         inputType: Secret
         description: GitHub token
@@ -33,6 +33,4 @@ deployments:
 
 # This section describes the Topics of the data pipeline
 topics:
-  - name: github_data
-    configuration:
-      partitions: 1
+  - name: github
